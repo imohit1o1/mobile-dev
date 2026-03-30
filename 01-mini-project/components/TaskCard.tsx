@@ -1,8 +1,9 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
 import React from 'react'
 import { Task } from '@/constants/Tasks'
 import { Colors } from '@/constants/Color'
 import { Ionicons } from '@expo/vector-icons'
+import { router } from 'expo-router'
 
 const STATUS_COLOR = {
     'Done': Colors.statusDone,
@@ -16,25 +17,30 @@ type taskCardProps = {
 
 const TaskCard = ({ task }: taskCardProps) => {
     return (
-        <View style={styles.card}>
-            <View style={styles.content}>
-                <Text style={styles.category}>{task.category}</Text>
-                <Text style={styles.title}>{task.title}</Text>
+        <TouchableOpacity
+            onPress={() => router.push(`/task/${task.id}` as any)}
+            activeOpacity={0.8}
+        >
+            <View style={styles.card} >
+                <View style={styles.content}>
+                    <Text style={styles.category}>{task.category}</Text>
+                    <Text style={styles.title}>{task.title}</Text>
 
-                <View style={styles.footer}>
-                    <View style={styles.timeRow}>
-                        <Ionicons name="time-outline" size={14} color={Colors.primary} />
-                        <Text style={styles.time}>{task.time}</Text>
+                    <View style={styles.footer}>
+                        <View style={styles.timeRow}>
+                            <Ionicons name="time-outline" size={14} color={Colors.primary} />
+                            <Text style={styles.time}>{task.time}</Text>
+                        </View>
+
+                        <Text style={[styles.status, { color: STATUS_COLOR[task.status] }]}>{task.status}</Text>
                     </View>
+                </View>
 
-                    <Text style={[styles.status, { color: STATUS_COLOR[task.status] }]}>{task.status}</Text>
+                <View style={[styles.iconBadge, { backgroundColor: task.icon.backgroundColor }]}>
+                    <Ionicons name={task.icon.name as any} size={18} color={Colors.primary} />
                 </View>
             </View>
-
-            <View style={[styles.iconBadge, { backgroundColor: task.icon.backgroundColor }]}>
-                <Ionicons name={task.icon.name as any} size={18} color={Colors.primary}/>
-            </View>
-        </View>
+        </TouchableOpacity>
     )
 }
 

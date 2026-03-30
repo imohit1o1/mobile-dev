@@ -13,4 +13,6 @@ export const Colors = {
     statusDone: "#4ADE80",
     statusInProgress: "#FBBF24",
     statusTodo: "#38BDF8",
+
+    navigationTabs: "#ffd33d"
 } as const;
