@@ -83,7 +83,7 @@ const AboutScreen = () => {
                     <Ionicons name="heart" size={32} color={Colors.primary} />
                     <Text style={styles.thanksTitle}>Thank You!</Text>
                     <Text style={styles.thanksText}>
-                        Special thanks to Hitesh Sir and Suraj Bhaiya for the amazing React Native & Expo tutorials!
+                        Special thanks to Hitesh and Suraj Sir for the amazing React Native & Expo tutorials!
                     </Text>
                     <Text style={styles.requestText}>
                         🙏 Please drop more videos on React Native + Expo
